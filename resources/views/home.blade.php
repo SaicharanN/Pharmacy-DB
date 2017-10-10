@@ -15,10 +15,10 @@
                     @endif
 
                     <div class="container-fluid">
-                        <a href="/createbill" title="create bill"> <img src="img5.png" style="width:200px; height:200px; margin-top:150px;  margin-left:250px; margin-bottom:10px"> </a>
-                        <a href="#" title="Search options"> <img src="img6.jpg" style="width:200px; height:200px; margin-top:150px;  margin-left:250px; margin-bottom:10px"> </a>
-                        <a href="#" title="Recent History"> <img src="img8.png" style="width:200px; height:200px; margin-top:40px;  margin-left:250px; margin-bottom:10px"> </a>
-                        <a href="#" title="Status of drugs"> <img src="img9.png" style="width:200px; height:200px; margin-top:40px;  margin-left:250px; margin-bottom:10px"> </a>
+                        <a href="/createbill" title="create bill"> <img src="img5.png" style="width:200px; height:200px; margin-top:0px;  margin-left:250px; margin-bottom:10px"> </a>
+                        <a href="#" title="Search options"> <img src="img6.jpg" style="width:200px; height:200px; margin-top:10px;  margin-left:250px; margin-bottom:10px"> </a>
+                        <a href="#" title="Recent History"> <img src="img8.png" style="width:200px; height:200px; margin-top:10px;  margin-left:250px; margin-bottom:10px"> </a>
+                        <a href="/adddrug" title="Entry of drugs"> <img src="img9.png" style="width:200px; height:200px; margin-top:10px;  margin-left:250px; margin-bottom:10px"> </a>
                     </div>
                 </div>
             </div>

@@ -16,12 +16,13 @@ class Drug extends Migration
         Schema::create('drug',function($t){
             $t->integer('DrugId');
             $t->string('DrugName');
-            $t->string('Quantity');
+            $t->integer('Quantity');
             $t->integer('Price');
             $t->timestamps();
 
             $t->primary('DrugId');
         });
+        //Schema::table('drug')
     }
 
     /**

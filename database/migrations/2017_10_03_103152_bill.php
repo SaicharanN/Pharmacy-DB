@@ -14,13 +14,13 @@ class Bill extends Migration
     public function up()
     {
         Schema::create('bill',function($t){
-            $t->integer('BillId');
+            $t->increments('BillId');
             $t->integer('Pid');
             $t->integer('BillAmount');
             $t->integer('Eid');
             $t->timestamps();
 
-            $t->primary('BillId');
+            #$t->primary('BillId');
         });
     }
 

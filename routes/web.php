@@ -15,11 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/adddrug', function () {
+    return view('AddDrug');
+});
 Route::get('/createbill', function () {
-    return view('createbill');
+    return view('minicreate');
 });
 
-Route::post('/create','Controller@create');
+Route::post('/minicreatebi','Controller@minicreatebi');
+Route::post('/newuserbi','Controller@newuserbi');
+Route::post('/createbi','Controller@createbi');
+Route::post('/addDrugbi','Controller@addDrugbi');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

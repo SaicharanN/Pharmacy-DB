@@ -61,21 +61,47 @@
 @section('content')
 
 <div>
-<form action="/create" method="post">
+<form action="/createbi" method="post">
     <table>
   <div class="container">
 	{{ csrf_field() }}
-    <label><b style="color:red">PatientID</b></label>
-    <input placeholder="Enter PId" name="Pid" required>
+    @if ($p==-1)
+        <label><b style="color:red; padding-left:350px">PatientID</b></label>
+        <input placeholder="{{$r}}" name="Pid" required><br><br><br>
 
-    <label><b style="color:red">Patient Name</b></label>
-    <input placeholder="Enter Pt Name" name="Pname" required>
+        <label><b style="color:red">Patient Name</b></label>
+        <input placeholder="Enter Pt Name" name="Pname" required>
 
-    <label><b style="color:red">Patient Age</b></label>
-    <input placeholder="Enter Pt Age" name="age" required>
-        
-    <label><b style="color:red">Sex</b></label>
-    <input placeholder="Enter Pt Gender" name="Sex" required>
+        <label><b style="color:red">Patient Age</b></label>
+        <input placeholder="Enter Pt Age" name="age" required>
+            
+        <label><b style="color:red">Sex</b></label>
+        <input placeholder="Enter Pt Gender" name="Sex" required>
+
+        <label><b style="color:red">Contact</b></label>
+        <input placeholder="Enter Pt Contact #" name="Cont" required>
+
+        <label><b style="color:red">Address</b></label>
+        <input placeholder="Enter Pt Address" name="Addr" required>
+    @else
+        <label><b style="color:red; padding-left:350px">PatientID</b></label>
+        <input placeholder={{$pt1}} name="Pid" required> <br><br><br>
+
+        <label><b style="color:red">Patient Name</b></label>
+        <input placeholder={{$pt2}} name="Pname" >
+
+        <label><b style="color:red">Patient Age</b></label>
+        <input placeholder={{$pt4}} name="age" >
+            
+        <label><b style="color:red">Sex</b></label>
+        <input placeholder={{$pt3}} name="Sex" >
+
+        <label><b style="color:red">Contact</b></label>
+        <input placeholder={{$pt5}} name="Cont" >
+
+        <label><b style="color:red">Address</b></label>
+        <input placeholder={{$pt6}} name="Addr" >
+    @endif
 
     
   </div>
