@@ -67,7 +67,7 @@
 	{{ csrf_field() }}
     @if ($p==-1)
         <label><b style="color:red; padding-left:350px">PatientID</b></label>
-        <input placeholder="{{$r}}" name="Pid" required><br><br><br>
+        <input value="{{$r}}" name="Pid" required><br><br><br>
 
         <label><b style="color:red">Patient Name</b></label>
         <input placeholder="Enter Pt Name" name="Pname" required>
@@ -85,22 +85,22 @@
         <input placeholder="Enter Pt Address" name="Addr" required>
     @else
         <label><b style="color:red; padding-left:350px">PatientID</b></label>
-        <input placeholder={{$pt1}} name="Pid" required> <br><br><br>
+        <input value={{$pt1}} name="Pid" required> <br><br><br>
 
         <label><b style="color:red">Patient Name</b></label>
-        <input placeholder={{$pt2}} name="Pname" >
+        <input value={{$pt2}} name="Pname" >
 
         <label><b style="color:red">Patient Age</b></label>
-        <input placeholder={{$pt4}} name="age" >
+        <input value={{$pt4}} name="age" >
             
         <label><b style="color:red">Sex</b></label>
-        <input placeholder={{$pt3}} name="Sex" >
+        <input value={{$pt3}} name="Sex" >
 
         <label><b style="color:red">Contact</b></label>
-        <input placeholder={{$pt5}} name="Cont" >
+        <input value={{$pt5}} name="Cont" >
 
         <label><b style="color:red">Address</b></label>
-        <input placeholder={{$pt6}} name="Addr" >
+        <input value={{$pt6}} name="Addr" >
     @endif
 
     

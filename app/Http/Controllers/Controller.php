@@ -9,7 +9,8 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use drug;
+use App\ptM;
+use App\drugM;
 use Auth;
 
 class Controller extends BaseController
@@ -18,18 +19,9 @@ class Controller extends BaseController
     function createbi(Request $req)
     {
     	$pid= $req->Pid;
-    	/*$pname= $req->Pname;
-    	$age= $req->age;
-    	$sex= $req->Sex;*/
     	$drugid= $req->drugid;
     	$quan= $req->Quantity;
-    	#$t1=array($req->txtbox);
-    	/*foreach ($req->txtbox as  $x) 
-    	{
-    		echo $x;
-    	}*/
         $exis=DB::table('patient')->where('Ptid','=',$pid)->first();
-        //echo $exis->Ptid;
         if(is_null($exis))
         {
             $pt1=$req->Pid;
@@ -59,29 +51,44 @@ class Controller extends BaseController
 
 		}
 		$user=Auth::user();
-		//echo $user['id'];
-		$data=array('Pid'=>$pid , 'BillAmount'=>$amt, 'Eid'=>  $user['id']);//Auth::user()->id );
+		$data=array('Pid'=>$pid , 'BillAmount'=>$amt, 'Eid'=>  $user['id']);
     	DB::table('bill')->insert($data);
-
-    	//Quantity of drug need to e reduced;
-
-
-        //$bn=DB::table('bill')->orderBy('BillId', 'desc')->first();
-        //$bno=$bn->value('BillId');
-        $bno=DB::table('bill')->max('BillId');//$btup->bill::max('BillId');//DB::table('bill')->where()
+        $bno=DB::table('bill')->max('BillId');
         $d1=array('Billid'=>$bno, 'Drugid'=>$drugid, 'Quantity'=>$quan);
         DB::table('drugsinbill')->insert($d1);
-
+        //$ids=ptM::all();
+        $w=array($drugid);
+        for($i=0, $count = count($req->txtbox);$i<$count;$i++)
+        {
+            //$w=$w->merge(
+            $w[$i+1]=$req->txtbox[$i];
+        }
+        $ids = DB::table('drug')->whereIn('DrugId',$w)->get();
+        //$quans = DB::table('drug')->whereIn('',[$req->txtbox,$drugid])->get();
         for($i=0, $count = count($req->txtbox);$i<$count;$i++) 
         {
+
              $x = $req->txtbox[$i];
              $y = $req->txtbox1[$i];
+             //$ids1=$ids->merge(drugM::where('DrugId','=', $x)->get());
              $d=array('Billid'=>$bno, 'Drugid'=>$x, 'Quantity'=>$y);
              DB::table('drugsinbill')->insert($d);
 
         }
-        //$txtb=txtbox;
-    	return view('showbill')->with("table",$req->txtbox)->with("quan",$req->txtbox1);
+        $w1=array();
+        for($i=0, $count = count($ids);$i<$count;$i++)
+        {
+            for($j=0, $count1 = count($req->txtbox);$j<$count1;$j++)
+            {
+                if($ids[$i]->DrugId == $req->txtbox[$j])
+                {
+                    $w1[$i]=$req->txtbox1[$j];
+                }
+            }
+            if($ids[$i]->DrugId  == $drugid)
+                $w1[$i]=$quan;
+        }
+    	return view('showbill')->with("ids",$ids)->with("quan",$w1);
     }
 
     function newuserbi(Request $req)
