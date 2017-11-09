@@ -1,46 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div style="background-image: url('imgg.jpg'); margin-top: -30px"> 
 <div>
-	<p style="color:black; font-size: 50px; padding:50px">
+	<p style="color:yellow; font-size: 50px; padding:50px">
 		We have exciting offers for our regular customers..<br>
 		We hope it's you too.
 	</p>
 
-	<form action="/minicreatebi" method="post">
+	<form action="/minicreatebi" class="form-inline" method="post">
 	    
 	  <div class="container">
 		{{ csrf_field() }}
-	    <label><b style="color:red; font-size: 40px">PatientID</b></label>
-	    <input placeholder="" style="font-size: 30px" name="Pid">
+	    <label><b style="color:red; font-size: 35px">PatientID</b></label>
+	    <input placeholder="" class="form-control" style="font-size: 19px" name="Pid">
 	  
-	  	<input type="Submit" name="Submit" value="submit" style="
+	  	<input type="Submit" class="btn btn-success" name="Submit" value="submit" style="
         background-color: blue;
         color: white;
-        padding: 14px 20px;
+       
         margin-left: 60px;
         border: none;
         cursor: pointer;
-        width: 15%;">
+        width: 10%;
+        height: 1%" >
         </div>
 	 </form>
-	 <br><br>
+	 <br>
 	 <form action="/newuserbi" method="post">
 	 	<div class="container">
 	 		{{ csrf_field() }}
-	 		<input type="Submit" name="Submit" value="No thanks  ->" style="
+	 		<input type="Submit" name="Submit" class="btn btn-success" value="No thanks  ->" style="
         background-color: blue;
         color: white;
-        padding: 14px 20px;
+        
         margin-left: 200px;
         border: none;
         cursor: pointer;
-        width: 20%;">
+        width: 10%;">
     	</div>
     </form>
  </div>
 
-
-
+<br><br> <br><br><br> <br><br><br><br><br>
+</div>
 @endsection

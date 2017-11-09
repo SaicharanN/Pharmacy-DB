@@ -4,9 +4,10 @@
 
 <div>
 	<p style="color:black; font-size: 50px; padding:50px">
-		Enter New Drugs here..<br>
-	</p>
-
+		Enter New Drugs here..
+	<img src="imgg2.jpg" style="margin-left: 2px">
+</p>
+	<br>
 	<form action="/addDrugbi" method="post">
 	    
 	  <div class="container">
@@ -25,8 +26,10 @@
         border: none;
         cursor: pointer;
         width: 10%;">
+
     	</div>
     </form>
+
  </div>
 
  @endsection

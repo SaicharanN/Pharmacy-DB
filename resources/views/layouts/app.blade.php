@@ -28,8 +28,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                       <img src="img4.png" style="width:200px;height:40px; padding-bottom:5px"> <!-- {{ config('app.name', 'Laravel') }} -->
+                    
+                    <a class="navbar-brand" href="/homee">
+                       <img src="img4.png" style="width:200px;height:40px; margin-top: -9px; "> <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                 </div>
 
@@ -53,6 +54,12 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="/profile">
+                                            Profile
+                                        </a>
+                                    </li>
+
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -63,6 +70,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    
                                 </ul>
                             </li>
                         @endguest

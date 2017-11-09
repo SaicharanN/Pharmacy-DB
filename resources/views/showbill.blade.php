@@ -4,10 +4,13 @@
 	
 	<div class="container">
 		<div class="row">
-			<h3 class='text-center'> Bill Receipt </h3>	
+			<h2 class='text-center'> Bill Receipt - {{$bno}}</h3>	
+			<h3> &emsp;&emsp;Pt ID: {{$req['Pid']}} &emsp; &emsp; Pt Name: {{$req['Pname']}} &emsp;&emsp; Pt Gender:  {{$req['Sex']}}
+				&emsp;&emsp; Pt Age:  {{$req['age']}} &emsp; &emsp; Contact:  {{$req['Cont']}}</h3>
+			
 			<br>
 
-			<table class="table">
+			<table class="table table-striped">
 			<tr>
 				<th> Drug Id </th>
 				<th> Drug Name </th>
@@ -31,7 +34,7 @@
 				@endforeach
 				<tr>
 					<td>  </td>
-					<td> </td>
+					<td>  </td>
 					<td>  </td>
 					<td> Grand Total </td>
 					<td> {{$cnt}} </td>

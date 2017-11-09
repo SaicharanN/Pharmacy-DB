@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+<script >
+    var ss=[];
+</script>
+
+
+@foreach($drug as $pm)
+    <script> 
+        var ph = "<?php echo $pm->DrugName; ?>";
+        ss.push(ph);
+    </script>
+@endforeach
 
 
 <SCRIPT language="javascript">
@@ -18,7 +29,21 @@
 
             var cell2 = row.insertCell(1);
             var element2 = document.createElement("input");
-           
+            element2.setAttribute("list", "ddd");
+            var y = document.createElement("DATALIST");
+            y.setAttribute("id", "ddd");
+            cell2.appendChild(y);
+
+            for(var r in ss)
+            {
+                var z = document.createElement("OPTION");
+                z.setAttribute("value", ss[r]);
+                document.getElementById("ddd").appendChild(z);
+            }
+            /*var z = document.createElement("OPTION");
+            z.setAttribute("value", "ad");
+            document.getElementById("ddd").appendChild(z);*/
+
             element2.name = "txtbox[]";
             cell2.appendChild(element2);
 
@@ -60,6 +85,8 @@
 
 @section('content')
 
+<div style="background-image: url('bimg1.jpg');margin-top: -50px">
+    <br><br>
 <div>
 <form action="/createbi" method="post">
     <table>
@@ -67,7 +94,7 @@
 	{{ csrf_field() }}
     @if ($p==-1)
         <label><b style="color:red; padding-left:350px">PatientID</b></label>
-        <input value="{{$r}}" name="Pid" required><br><br><br>
+        <input value="{{$r}}" name="Pid" required readonly><br><br><br>
 
         <label><b style="color:red">Patient Name</b></label>
         <input placeholder="Enter Pt Name" name="Pname" required>
@@ -85,25 +112,24 @@
         <input placeholder="Enter Pt Address" name="Addr" required>
     @else
         <label><b style="color:red; padding-left:350px">PatientID</b></label>
-        <input value={{$pt1}} name="Pid" required> <br><br><br>
+        <input value={{$pt1}} name="Pid" required readonly> <br><br><br>
 
         <label><b style="color:red">Patient Name</b></label>
-        <input value={{$pt2}} name="Pname" >
+        <input value={{$pt2}} name="Pname" readonly>
 
         <label><b style="color:red">Patient Age</b></label>
-        <input value={{$pt4}} name="age" >
+        <input value={{$pt4}} name="age" readonly>
             
         <label><b style="color:red">Sex</b></label>
-        <input value={{$pt3}} name="Sex" >
+        <input value={{$pt3}} name="Sex" readonly>
 
         <label><b style="color:red">Contact</b></label>
-        <input value={{$pt5}} name="Cont" >
+        <input value={{$pt5}} name="Cont" readonly>
 
         <label><b style="color:red">Address</b></label>
-        <input value={{$pt6}} name="Addr" >
+        <input value={{$pt6}} name="Addr" readonly>
     @endif
 
-    
   </div>
 
 <br>
@@ -114,10 +140,15 @@
     <TABLE style="margin-left:450px"  id="dataTable" width="350px" border="1">
         <TR>
             <TD><INPUT type="checkbox" name="chk"/></TD>
-            <TD><label><b>DrugId</b></label>
-    <input placeholder=""  required name="drugid">
+            <TD><label><b style="color: yellow">Drug</b></label>
+    <input placeholder=""  required name="drugid" list="hemu">
+        <datalist id="hemu">
+            @foreach($drug as $r)
+                <option value={{$r->DrugName}} >
+            @endforeach
+        </datalist>
             
-            <TD><label><b>Quantity</b></label>
+            <TD><label><b style="color: yellow">Quantity</b></label>
     <input placeholder="" required name="Quantity">
         </TR>
    
@@ -125,14 +156,10 @@
     </TABLE>
 
 <br>
-<input type="Submit" name="Submit" value="submit" style="
-        background-color: white;
-        color: black;
-        padding: 14px 20px;
+<input type="Submit" class="btn" name="Submit" value="submit" style="
         margin-left: 600px;
-        border: none;
-        cursor: pointer;
-        width: 6%;">
+        
+        ">
 <!---<a href="/"><input style="
         background-color: white;
         color: black;
@@ -146,8 +173,9 @@
 </form>
 
 </div>
-
-
+   
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 
 
 @endsection
